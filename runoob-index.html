@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>菜鸟教程 - 学的不仅是技术，更是梦想！</title>
+    <base href="https://www.runoob.com">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <style>
+        /* 网页头部 */
+        .head {
+            background: rgb(246, 246, 246); 
+            height: 80px; width: 100%; 
+            border: 1px red solid;}
+        .width30 {width: 30%; margin-left: 50px;}
+        .width40 {width: 40%;}
+        #input_search {width: 400px; height: 30px;}
+        /* 网页导航 */
+        .nav {
+            background: rgb(150, 185, 125); 
+            height: 50px; width: 100%;
+            border: 1px red solid;}
+        .nav :link {text-decoration: white;;}
+        .nav :visited {text-decoration: white;;}
+        .nav :hover {color: rgb(205, 224, 191);}
+        .nav :active {text-decoration: white;;}
+        .nav ul li {
+            font-size: 14px;
+            padding: 0 10px;
+        }
+        /* 网页主体 */
+        #main_left {width: 200px; margin-left: 50px;}
+        #main_right {width: 960px; background: white;}
+        .main {
+            background: rgb(246, 246, 246);
+            margin: 10px auto;
+            width: 100%;
+            display: inline-block;
+            border: 1px red solid;}
+        .main_right_block {
+            margin: 10px 15px; 
+            display: inline-block;
+        }
+        .main_right_content {
+            margin: 5px 5px;
+            width: 300px; 
+            height: 80px;
+            background-color: rgb(246, 246, 246);
+            cursor: pointer;}
+        .main_right_content :hover {background-color: rgb(239, 239, 239);}
+        .main_right_content a {text-decoration: none; color: black;}
+        #main-right {background: white;}
+        .main_right_content_title {color: rgb(100, 133, 76);}
+        .main_right_content_content {font-size: 14px;}
+        /* 教程目录样式 */
+        .dir {
+            height: 30px; width: 180px; 
+            font-size: 16px; /* 没有起作用？*/
+            cursor: pointer;
+            border: 0.1px rgb(239, 239, 239) solid;}
+        .dir1 {background: rgb(239, 239, 239);}
+        .dir2 {background: white;}
+        .dir3 {background: rgb(251, 251, 251);}
+
+        /* 网页尾部 */
+        .foot {
+            background: rgb(255, 255, 255); 
+            height: 200px; width: 860px;
+            margin: 0 auto;
+            border: 1px red solid;}
+        .left {float: left;}
+        .right {float: right;}
+        .nav ul li {list-style: none;}
+
+        .foot ul li {margin: 0 5px; list-style: none;}
+        #foot {color: gray;}
+        #foot ul li {font-size: 14px; width: 120px; overflow:hidden;}
+        #foot ul li:hover {color: rgb(131, 209, 153); cursor: pointer;}
+        #wechat {margin-left: 50px;}
+    </style>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div class="head">
+        <div class="left width30">
+            <span><h2>RUNOOB.COM</h2></span>
+        </div>
+        <div class="left width30">&nbsp;</div>
+        <div class="right width40">
+            <input id="input_search" type="text" placeholder="搜索......">
+        </div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li class="left"><a href="#">首页</a></li>
+            <li class="left"><a href="#">菜鸟笔记</a></li>
+            <li class="left"><a href="#">菜鸟工具</a></li>
+            <li class="left"><a href="#">参考手册</a></li>
+            <li class="left"><a href="#">用户笔记</a></li>
+            <li class="left"><a href="#">测验/考试</a></li>
+            <li class="left"><a href="#">本地书签</a></li>
+        </ul>
+    </div>
+    <div class="main" id="main">
+        <div class="left" id="main_left">
+            <div class="dir dir1" id="main_left0" @click="toggleTabs(0)"><i class="fa fa-bars">&nbsp;</i>全部教程</div>
+            <div class="dir dir2" id="main_left1" @click="toggleTabs(1)"><i class="fa fa-external-link">&nbsp;</i>HTML/CSS</div>
+            <div class="dir dir3" id="main_left2" @click="toggleTabs(2)"><i class="fa fa-external-link">&nbsp;</i>JavaScript</div>
+            <div class="dir dir2" id="main_left3" @click="toggleTabs(3)"><i class="fa fa-external-link">&nbsp;</i>服务端</div>
+            <div class="dir dir3" id="main_left4" @click="toggleTabs(4)"><i class="fa fa-external-link">&nbsp;</i>数据库</div>
+            <div class="dir dir2" id="main_left5" @click="toggleTabs(5)"><i class="fa fa-external-link">&nbsp;</i>移动端</div>
+            <div class="dir dir3" id="main_left6" @click="toggleTabs(6)"><i class="fa fa-external-link">&nbsp;</i>XML教程</div>
+            <div class="dir dir2" id="main_left7" @click="toggleTabs(7)"><i class="fa fa-external-link">&nbsp;</i>ASP.NET</div>
+            <div class="dir dir2" id="main_left8" @click="toggleTabs(8)"><i class="fa fa-external-link">&nbsp;</i>Web Service</div>
+            <div class="dir dir3" id="main_left9" @click="toggleTabs(9)"><i class="fa fa-external-link">&nbsp;</i>开发工具</div>
+            <div clsas="dir dir2" id="main_left10" @click="toggleTabs(10)"><i class="fa fa-external-link">&nbsp;</i>网站建设</div>
+        </div>
+        <div class="left" id="main_right">
+            <div class="main_right_block" id="main_right1" v-show="nowIndex===1 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>HTML/CSS</div>
+                <div class="main_right_content left" v-for="item in learnHtmlCss" @click="toggleRef(item)">
+                    <div class="main_right_content_title">{{item[0]}}</div>
+                    <div class="main_right_content_content">{{item[1]}}</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right2" v-show="nowIndex===2 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>JavaScript</div>
+                <div class="main_right_content left" v-for="item in learnJavascript">
+                    <div class="main_right_content_title">{{item[0]}}</div>
+                    <div class="main_right_content_content">{{item[1]}}</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right3" v-show="nowIndex===3 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>服务端</div>
+                <div class="main_right_content left" v-for="item in learnServer">
+                    <div class="main_right_content_title">{{item[0]}}</div>
+                    <div class="main_right_content_content">{{item[1]}}</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right4" v-show="nowIndex===4 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>数据库</div>
+                <div class="main_right_content left" v-for="item in learnDatabase">
+                    <div class="main_right_content_title">{{item[0]}}</div>
+                    <div class="main_right_content_content">{{item[1]}}</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right5" v-show="nowIndex===5 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>移动端</div>
+                <div class="main_right_content left" v-for="item in learnMobile">
+                    <div class="main_right_content_title">{{item[0]}}</div>
+                    <div class="main_right_content_content">{{item[1]}}</div>
+                </div>
+            </div>         
+            <!-- <div class="main_right_block" id="main_right6" v-show="nowIndex===6 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>XML教程</div>
+                <div class="main_right_content left">
+                    <div>【学习XML】</div>
+                    <div>XML被设计用来传输和存储数据</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right7" v-show="nowIndex===7 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>ASP.NET</div>
+                <div class="main_right_content left">
+                    <div>【学习ASP.NET】</div>
+                    <div>ASP.NET是一个使用HTML、CSS、JavaScript和服务器脚本创建网页和网站的开发框架</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right8" v-show="nowIndex===8 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>Web Service</div>
+                <div class="main_right_content left">
+                    <div>【学习Web Service】</div>
+                    <div>Web Service脚本平台需支持XML+HTTP</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right9" v-show="nowIndex===9 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>开发工具</div>
+                <div class="main_right_content left">
+                    <div>【学习Eclipse】</div>
+                    <div>Eclipse是一个开放源代码的、基于Java的可扩展开发平台</div>
+                </div>
+            </div>         
+            <div class="main_right_block" id="main_right10" v-show="nowIndex===10 || nowIndex===0">
+                <div><i class="fa fa-list-ul"></i>网站建设</div>
+                <div class="main_right_content left">
+                    <div>【学习HTTP】</div>
+                    <div>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议</div>
+                </div>
+            </div>          -->
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                tabs: ['all', 'HTML/CSS','JavaScript','服务端','数据库','移动端',
+                'XML教程','ASP.NET','Web Service','开发工具','网站建设'],
+                learnHtmlCss: [
+                    ['【学习HTML】', 'HTML，即超文本标记语言（Hyper Text Markup Language）', '/html/html-tutorial.html'],
+                    ['【学习HTML5】', 'HTML5是下一代HTML标准', '/html/html5-intro.html'],
+                    ['【学习CSS】', '层叠样式表（Cascading Style Sheet）', '#'],
+                    ['【学习CSS3】', 'CSS3是CSS技术的升级版本', '#'],
+                    ['【学习Bootstrap3】', 'Bootstrap，来自Twitter，是目前最受欢迎的前端框架', '#'],
+                    ['【学习Bootstrap4】', 'Bootstrap4目前是Bootstrap的最新版本', '#'],
+                    ['【学习Font Awesome】', 'Font Awesome是一套绝佳的图标字体库和CSS框架', '#'],
+                    ['【学习Foundation】', 'Foundation用于开发响应式的HTML，CSS and JavaScript框架', '#']],
+                learnJavascript: [
+                    ['【学习JavaScript】', 'JavaScript是Web的编程语言'],
+                    ['【学习HTML DOM】', 'HTML DOM定义了访问和操作HTML文档的标准方法'],
+                    ['【学习jQuery】', 'jQuery是一个JavaScript库'],
+                    ['【学习AngularJS】', 'AngularJS通过新的属性和表达式扩展了HTML'],
+                    ['【学习AngularJS2】', 'AngularJS2是一款开源JavaScript库，由Google维护。'],
+                    ['【学习Vue.js】', 'Vue.js是一套构建用户界面的渐进式框架。'],
+                    ['【学习React】', 'React是一个用于构建用户界面的JAVASCRIPT库'],
+                    ['【学习TypeScript】', 'TypeScript是JavaScript的一个超集，支持ECMAScript6标准'],
+                    ['【学习jQuery UI】', 'jQuery UI是建立在jQuery上的一组用户界面交互、特效、小部件及主题'],
+                    ['【学习jQuery EasyUI】', 'jQuery EasyUI是一个基于jQuery的框架，集成了各种用户界面插件'],
+                    ['【学习Node.js】', 'Node.js是运行在服务端的JavaScript'],
+                    ['【学习AJAX】', 'AJAX=Asynchronous JavaScript and XML（异步的JavaScript和XML）'],
+                    ['【学习JSON】', 'JSON是存储和交换文本信息的语法'],
+                    ['【学习Echarts】', 'ECharts是一个使用JavaScript实现的开源可视化库'],
+                    ['【学习Highcharts】', 'Highcharts是一个用纯JavaScript编写的一个图标库'],
+                    ['【学习Google地图】', 'Google地图接口使用说明']],
+                learnServer: [
+                    ['【学习Python】', 'Python3.x版本，未来主流版本。'],
+                    ['【学习Python2.x】', 'Python是一种面向对象、解释型计算机程序设计语言'],
+                    ['【学习Linux】', 'Linux是一套免费使用和自由传播的类Unix操作系统'],                
+                    ['【学习Docker】', 'Docker是一个开源的应用容器引擎，基于Go语言'],
+                    ['【学习Ruby】', '一种为简单快捷的面向对象编程（面向对象程序设计）而创的脚本语言'],
+                    ['【学习Java】', '一种可以撰写跨平台应用软件的面向对象的程序设计语言'],
+                    ['【学习C】', '一门通用计算机编程语言'],
+                    ['【学习C++】', 'C++是在C语言的基础上开发的一种通用编程语言'],
+                    ['【学习Perl】', 'Perl是高级、通用、直译式、动态的程序语言'],
+                    ['【学习Servlet】', '运行在Web服务器或应用服务器上的程序'],
+                    ['【学习JSP】', 'JSP与PHP、ASP、ASP.NET等语言类似，运行在服务端的语言'],
+                    ['【学习Lua】', 'Lua是一种轻量小巧的脚本语言，用标准C语言编写并以源代码形式开放'],
+                    ['【学习Scala】', 'Scala是一门多范式（multi-paradigm）的编程语言。'],
+                    ['【学习Go】', 'Go语言是谷歌推出的一种全新的编程语言'],
+                    ['【学习PHP】', 'PHP是一种通用开源脚本语言'],
+                    ['【学习Django】', 'Django是一个开源代码Web应用框架，由Python写成'],
+                    ['【学习设计模式】', '设计模式代表了最佳实践，通常被有经验的面向对象的软件开发人员所采用'],
+                    ['【正则表达式】', '正则表达式是对字符串操作的一种逻辑公式'],
+                    ['【学习Maven】', 'Maven是一个项目管理工具，可以对Java项目进行构建、依赖管理'],
+                    ['【学习NumPy】', 'NumPy是Python语言的一个扩展程序库，支持大量的维度数组与矩阵运算。'],
+                    ['【学习ASP】', 'ASP（Active Server Pages动态服务器页面）是一种生成动态交互性网页的强有力工具'],
+                    ['【学习AppML】', 'AppML是一个为web应用程序设计的HTML扩展框'],
+                    ['【学习VBScript】', '一种微软环境下的轻量级的解释型语言']],     
+                learnDatabase: [
+                    ['【学习SQL】', '结构化查询语言（Structured Query Language）'],
+                    ['【学习Mysql】', 'MySQL是一个关系型数据库管理系统'],
+                    ['【学习PostgreSQL】', 'PostgreSQL是一个免费的对象-关系数据库服务器（ORDBMS）'],
+                    ['【学习SQLite】', '一款轻型的数据库'],
+                    ['【学习MongoDB】', 'MongoDB是目前在IT行业非常流行的一种非关系型数据库（NoSql）'],
+                    ['【学习Redis】', '一个高性能的key-value数据库'],
+                    ['【学习Memchached】', 'Memcached是一个自由开源的，高性能，分布式内存对象缓存系统。']],
+                learnMobile: [
+                    ['【学习Android】', 'Android是一种基于Linux的自由开放源代码的操作系统，主要使用于移动设备'],
+                    ['【学习Swift】', 'Swift是一种支持多编程范式和编译式的编程语言，用于开发iOS，OS X和watchOS应用程序。'],
+                    ['【学习jQuery Mobile】', 'jQuery Mobile是jQuery在手机上和平板设备上的版本'],
+                    ['【学习ionic】', 'ionic是一个强大的HTML5应用程序开发框架（HTML5 Hybrid Mobile App Framework）'],
+                    ['【学习Kotlin】', '在Java虚拟机上运行的静态类型编程语言，Android官方开发语言']
+                ],
+                nowIndex: 0
+            },
+            methods: {
+                toggleTabs:function(index) {
+                    this.nowIndex = index;
+                },
+                toggleRef:function(item) {
+                    window.open(item[2], '_self');
+                } 
+            }
+        })
+    </script>
+    <div class="foot" id="foot">
+        <div class="left">
+            在线实例
+            <ul>
+                <li>HTML实例</li>
+                <li>CSS实例</li>
+                <li>JavaScript实例</li>
+                <li>Ajax实例</li>
+                <li>jQuery实例</li>
+                <li>XML实例</li>
+                <li>Java实例</li>
+            </ul>
+        </div>
+        <div class="left">
+            字符集&工具
+            <ul>
+                <li>HTML字符集设置</li>
+                <li>HTML ASCII字符集</li>
+                <li>HTML ISO-8859-1</li>
+                <li>HTML实体符号</li>
+                <li>HTML拾色器</li>
+                <li>JSON格式化工具</li>
+            </ul>
+        </div>
+        <div class="left">
+            最新更新
+            <ul>
+                <li>Python动态变量定义与调用</li>
+                <li>JSON vs XML</li>
+                <li>SQL EXISTS运算符</li>
+                <li>HTML main标签</li>
+                <li>ECharts旭日图</li>
+                <li>ECharts事件处理</li>
+                <li>ECharts数据的视觉映射</li>
+            </ul>   
+        </div>
+        <div class="left">
+            站点信息
+            <ul>
+                <li>意见反馈</li>
+                <li>合作联系</li>
+                <li>免责声明</li>
+                <li>关于我们</li>
+                <li>文章归档</li>
+            </ul>
+        </div>
+        <div class="left" id="wechat">
+            <h3>关注微信</h3>
+            <img src="" alt="">
+        </div>
+    </div>
+</body>
+</html>
